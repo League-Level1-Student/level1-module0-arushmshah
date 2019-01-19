@@ -13,13 +13,15 @@ public static void main(String[] args) {
 	house("black", "large", 575, 550);
 	house("white", "medium", 750, 550);
 }
-
+static Robot r= new Robot();
 private static void house(String color, String size, int X, int Y) {
-	Robot r= new Robot();
+	
 	int height=0;
 	r.setX(X);
 	r.setY(Y);
 	r.setSpeed(100);
+	r.setPenWidth(3);
+	r.setWindowColor(23, 30, 40);
 
 	if(color.equals("gray")) {
 		r.setPenColor(Color.LIGHT_GRAY);
@@ -41,45 +43,30 @@ private static void house(String color, String size, int X, int Y) {
 		height=250;
 	}
 	r.move(height);
-	/*if(size.equals("large")) {
-		Flatroof(height, X, Y);
+	if(size.equals("large")) {
+		FlatRoof();
 	}
-	else if(size.equals("medium")) {
-		Pointyroof();
+	else {
+	PointedRoof();
 	}
-	else if(size.equals("small")) {
-		Pointyroof();
-	}
-	*/
-	
-	r.move(height);
+    r.move(height);
     r.turn(-90);
-    r.setPenColor(0,200,0);
-    r.setPenWidth(50);
-    r.move(70);
-    r.hide();
+    r.setPenColor(22, 194, 85);
+    r.setPenWidth(10);
+    r.move(90);
+    r.turn(-90);
+    r.hide();   
 }
-	private static void Pointyroof() {
-		Robot r= new Robot();
-		r.penDown();
-		r.setSpeed(100);
+private static void PointedRoof() {
 	r.turn(45);
-	r.move(70);
+	r.move(50);
 	r.turn(90);
-	r.move(70);
-	r.turn(45);;
-	}
-	
-	private static void Flatroof(int height, int X, int Y) {
-		
-		Robot r= new Robot();
-		r.penDown();
-		r.setSpeed(100);
-		r.setX(X+height);
-		r.setY(Y+height);
-		r.turn(90);
-		r.move(70);
-		r.turn(90);;
-	
+	r.move(50);
+	r.turn(45);
+}
+private static void FlatRoof() {
+	r.turn(90);
+	r.move(100);
+	r.turn(90);
 }
 }
